@@ -8,12 +8,3 @@
         upgrade: full
         autoremove: yes
         autoclean: yes
-
-#    - name: Full Upgrade
-#      apt:
-#        upgrade: full
-#
- #   - name: Autoremove and Clean
-  #    apt:
-   #     autoremove: yes
-    #    autoclean: yes
