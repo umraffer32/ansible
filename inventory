@@ -4,6 +4,7 @@
 10.200.50.108
 10.200.50.109
 10.200.50.110
+
 [workers:vars]
 ansible_user=root
 

@@ -1,0 +1,9 @@
+---
+- name: Restart all Ubuntu machines
+  hosts: workers
+  #become: yes
+  tasks:
+    - name: Reboot the system
+      ansible.builtin.reboot:
+        msg: "Reboot initiated by Ansible"
+        reboot_timeout: 120
