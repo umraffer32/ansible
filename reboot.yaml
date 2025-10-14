@@ -1,7 +1,7 @@
 ---
 - name: Restart all Ubuntu machines
   hosts: workers
-  #become: yes
+  become: yes
   tasks:
     - name: Reboot the system
       ansible.builtin.reboot:
