@@ -8,10 +8,10 @@
 [workers:vars]
 ansible_user=root
 
-[proxmox-server]
+[proxmox]
 10.200.50.104
 
-[proxmox-server:vars]
+[proxmox:vars]
 ansible_user=jacksparrow
 
 [pickleboy]
