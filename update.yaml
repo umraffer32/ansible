@@ -2,9 +2,15 @@
 - name: Update and upgrade all packages on worker nodes
   hosts: workers
   tasks:
-    - name: Update, Upgrade, Autoremove, Autoclean
+    - name: Update
       apt:
         update_cache: yes
+
+    - name: Full Upgrade
+      apt:
         upgrade: full
+
+    - name: Remove and Clean
+      apt:
         autoremove: yes
         autoclean: yes
