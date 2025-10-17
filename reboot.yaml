@@ -7,5 +7,7 @@
       ansible.builtin.reboot:
         msg: "Reboot initiated by Ansible"
         reboot_timeout: 30
+        pre_reboot_delay: 2
+        post_reboot_delay: 2
         test_command: whoami
 
