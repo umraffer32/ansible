@@ -1,0 +1,24 @@
+---
+- name: Automatic Updates
+  hosts: workers
+  become: true
+  tasks:
+    - name: ======Installing unattended-upgrades======
+      ansible.builtin.apt:
+        name: unattended-upgrades
+        state: present
+
+    - name: ======Configuring unattended-upgrades======
+      ansible.builtin.copy:
+        src: ~/ansible/files/50unattended-upgrades
+        dest: /etc/apt/apt.conf.d/50unattended-upgrades
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+
+    - name: ======Restarting unattended-upgrades======
+      ansible.builtin.systemd:
+        name: unattended-upgrades
+        state: restarted
+
