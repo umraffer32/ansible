@@ -1,0 +1,3 @@
+---
+-  import_playbook: scripts/update.yaml
+-  import_playbook: scripts/tailscale.yaml

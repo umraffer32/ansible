@@ -1,0 +1,40 @@
+---
+- name: Install Tailscale
+  hosts: workers
+  become: true
+  tasks:
+
+    - name: Install prerequisites
+      ansible.builtin.apt:
+        name:
+          - curl
+          - gnupg
+        state: present
+        update_cache: yes
+
+    - name: Add Tailscale GPG key
+      ansible.builtin.shell: |
+        curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/$(lsb_release -cs).gpg \
+        | gpg --dearmor -o /usr/share/keyrings/tailscale-archive-keyring.gpg
+      args:
+        creates: /usr/share/keyrings/tailscale-archive-keyring.gpg
+
+    - name: Add Tailscale repository
+      ansible.builtin.shell: |
+        echo "deb [signed-by=/usr/share/keyrings/tailscale-archive-keyring.gpg] \
+        https://pkgs.tailscale.com/stable/ubuntu $(lsb_release -cs) main" \
+        > /etc/apt/sources.list.d/tailscale.list
+      args:
+        creates: /etc/apt/sources.list.d/tailscale.list
+
+    - name: Install Tailscale
+      ansible.builtin.apt:
+        name: tailscale
+        state: present
+        update_cache: yes
+
+    - name: Enable and start Tailscale
+      ansible.builtin.systemd:
+        name: tailscaled
+        enabled: true
+        state: started

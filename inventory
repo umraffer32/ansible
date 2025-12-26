@@ -1,21 +1,21 @@
 [workers]
-10.200.50.102
-#10.200.50.103
-#10.200.50.104
-#10.200.50.105
-#10.200.50.106
+10.200.50.101
+10.200.50.104
+10.200.50.105
+10.200.50.106
+10.200.50.107
 
 [workers:vars]
 ansible_user=root
 
-[proxmox]
-10.200.50.104
+#[proxmox]
+#10.200.50.104
 
-[proxmox:vars]
-ansible_user=jacksparrow
+#[proxmox:vars]
+#ansible_user=jacksparrow
 
-[pickleboy]
-100.70.22.103
+#[pickleboy]
+#100.70.22.103
 
-[pickleboy:vars]
-ansible_user=mrpocket
+#[pickleboy:vars]
+#ansible_user=mrpocket

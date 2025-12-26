@@ -1,0 +1,35 @@
+---
+- name: UPDATE === UPGRADE == UNATTENDED-UPGRADES
+  hosts: workers
+  become: true
+  tasks:
+
+    - name: ====== UPDATE & UPGRADE ======
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: yes
+        autoremove: yes
+        autoclean: yes
+
+    - name: ====== INSTALLING UNATTENDED-UPGRADES ======
+      ansible.builtin.apt:
+        name:
+          - unattended-upgrades
+          - htop
+          - curl
+        state: present
+
+    - name: ====== CONFIGURING UNATTENDED-UPGRADES ======
+      ansible.builtin.copy:
+        src: ~/ansible/files/50unattended-upgrades
+        dest: /etc/apt/apt.conf.d/50unattended-upgrades
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+
+    - name: ====== RESTARTING SERVICE ======
+      ansible.builtin.systemd:
+        name: unattended-upgrades
+        state: restarted
+
