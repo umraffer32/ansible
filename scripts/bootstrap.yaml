@@ -1,0 +1,17 @@
+- name: Give user sudo (NOPASSWD)
+  hosts: workers
+  become: true
+  tasks:
+    - name: Ensure user is in sudo group
+      user:
+        name: "{{ ansible_user }}"
+        groups: sudo
+        append: yes
+
+    - name: Allow passwordless sudo
+      copy:
+        dest: "/etc/sudoers.d/{{ ansible_user }}"
+        content: "{{ ansible_user }} ALL=(ALL) NOPASSWD:ALL\n"
+        owner: root
+        group: root
+        mode: '0440'

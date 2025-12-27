@@ -17,6 +17,7 @@
           - unattended-upgrades
           - htop
           - curl
+          - traceroute
         state: present
 
     - name: ====== CONFIGURING UNATTENDED-UPGRADES ======
