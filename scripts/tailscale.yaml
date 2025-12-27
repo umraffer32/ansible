@@ -2,15 +2,10 @@
 - name: Install Tailscale
   hosts: workers
   become: true
-  tasks:
+  vars_files:
+    - group_vars/workers/vault.yml
 
-    - name: Install prerequisites
-      ansible.builtin.apt:
-        name:
-          - curl
-          - gnupg
-        state: present
-        update_cache: yes
+  tasks:
 
     - name: Add Tailscale GPG key
       ansible.builtin.shell: |
@@ -38,3 +33,10 @@
         name: tailscaled
         enabled: true
         state: started
+
+    - name: Bring Tailscale up with auth key
+      ansible.builtin.command: >
+        tailscale up
+        --authkey={{ tailscale_authkey }}
+        --accept-dns=false
+      when: "'Logged out' in lookup('pipe', 'tailscale status 2>/dev/null || true')"

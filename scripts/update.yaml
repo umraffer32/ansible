@@ -16,8 +16,9 @@
         name:
           - unattended-upgrades
           - htop
-          - curl
           - traceroute
+          - curl
+          - gnupg
         state: present
 
     - name: ====== CONFIGURING UNATTENDED-UPGRADES ======
