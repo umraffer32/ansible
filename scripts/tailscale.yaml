@@ -34,9 +34,15 @@
         enabled: true
         state: started
 
+    - name: Check Tailscale status
+      ansible.builtin.command: tailscale status
+      register: tailscale_status
+      changed_when: false
+      failed_when: false
+
     - name: Bring Tailscale up with auth key
       ansible.builtin.command: >
         tailscale up
         --authkey={{ tailscale_authkey }}
         --accept-dns=false
-      when: "'Logged out' in lookup('pipe', 'tailscale status 2>/dev/null || true')"
+      when: "'Logged out' in tailscale_status.stdout"
