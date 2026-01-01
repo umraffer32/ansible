@@ -6,7 +6,6 @@
     - group_vars/workers/vault.yml
 
   tasks:
-
     - name: Add Tailscale GPG key
       ansible.builtin.shell: |
         curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/$(lsb_release -cs).gpg \

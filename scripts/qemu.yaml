@@ -3,7 +3,6 @@
   hosts: workers
   become: true
   tasks:
-
     - name: Install QEMU Guest Agent
       ansible.builtin.apt:
         name: qemu-guest-agent
