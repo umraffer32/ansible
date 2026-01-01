@@ -3,13 +3,12 @@
   hosts: workers
   become: true
   tasks:
-
-#    - name: ====== UPDATE & UPGRADE ======
-#      ansible.builtin.apt:
-#        update_cache: yes
-#        upgrade: yes
-#        autoremove: yes
-#        autoclean: yes
+    #    - name: ====== UPDATE & UPGRADE ======
+    #      ansible.builtin.apt:
+    #        update_cache: yes
+    #        upgrade: yes
+    #        autoremove: yes
+    #        autoclean: yes
 
     - name: ====== Installing unattended-upgrades ======
       ansible.builtin.apt:
@@ -27,11 +26,11 @@
         dest: /etc/apt/apt.conf.d/50unattended-upgrades
         owner: root
         group: root
-        mode: '0644'
+        mode: "0644"
         backup: yes
 
     - name: ====== Restarting service ======
       ansible.builtin.systemd:
         name: unattended-upgrades
         state: restarted
-
+        
