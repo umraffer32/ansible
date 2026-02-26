@@ -6,7 +6,7 @@
 #10.200.50.14
 #10.200.50.15
 [workers:vars]
-ansible_user=root
+ansible_user=serv0
 
 
 #[proxmox]
