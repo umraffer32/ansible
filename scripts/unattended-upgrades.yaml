@@ -3,12 +3,12 @@
   hosts: workers
   become: true
   tasks:
-    #    - name: ====== UPDATE & UPGRADE ======
-    #      ansible.builtin.apt:
-    #        update_cache: yes
-    #        upgrade: yes
-    #        autoremove: yes
-    #        autoclean: yes
+    - name: ====== UPDATE & UPGRADE ======
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: yes
+        autoremove: yes
+        autoclean: yes
 
     - name: ====== Installing unattended-upgrades ======
       ansible.builtin.apt:
