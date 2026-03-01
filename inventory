@@ -5,17 +5,9 @@
 10.200.50.13
 #10.200.50.14
 #10.200.50.15
+
 [workers:vars]
 ansible_user=serv0
 
 
-#[proxmox]
-#10.200.50.104
-#[proxmox:vars]
-#ansible_user=jacksparrow
 
-
-#[pickleboy]
-#100.70.22.103
-#[pickleboy:vars]
-#ansible_user=mrpocket
