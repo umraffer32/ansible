@@ -1,0 +1,17 @@
+---
+- name: Copy helper scripts to user home
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Copy day.sh
+      ansible.builtin.copy:
+        src: ../files/day.sh
+        dest: ~/day.sh
+        mode: "0755"
+
+    - name: Copy update.sh
+      ansible.builtin.copy:
+        src: ../files/update.sh
+        dest: ~/update.sh
+        mode: "0755"

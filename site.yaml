@@ -3,5 +3,6 @@
 -  import_playbook: scripts/unattended-upgrades.yaml
 -  import_playbook: scripts/docker.yaml
 -  import_playbook: scripts/tailscale.yaml
+-  import_playbook: scripts/scripts.yaml
 
 #-  import_playbook: scripts/reboot.yaml
