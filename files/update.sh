@@ -7,7 +7,7 @@ sudo apt autoclean
 #./reboot.sh | grep [Rr]eboot
 
 # Check if reboot is required
-echo "Checking if a reboot is required..."
+# echo "Checking if a reboot is required..."
 
 if [ -f /var/run/reboot-required ]; then
     echo "Reboot is required."
@@ -25,24 +25,3 @@ if [ -f /var/run/reboot-required ]; then
 else
     echo "No reboot required."
 fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Check if reboot is required
-#echo "Checking if a reboot is required..."
-#if [ -f /var/run/reboot-required ]; then
-#    echo "Reboot is required"
-#else
-#    echo "No reboot required"
-#fi

@@ -1,17 +1,14 @@
 ---
-- name: Copy helper scripts to user home
-  hosts: all
-  become: true
+- name: Add helper scripts to home directory
+  hosts: workers
+  become: false
 
   tasks:
-    - name: Copy day.sh
-      ansible.builtin.copy:
-        src: ../files/day.sh
-        dest: ~/day.sh
-        mode: "0755"
-
-    - name: Copy update.sh
-      ansible.builtin.copy:
-        src: ../files/update.sh
-        dest: ~/update.sh
-        mode: "0755"
+    - name: Sync only shell scripts
+      ansible.builtin.synchronize:
+        src: /home/jacksparrow/ansible/files/
+        dest: ~/
+        delete: true
+        rsync_opts:
+          - "--include=*.sh"
+          - "--exclude=*"
