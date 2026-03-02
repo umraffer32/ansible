@@ -4,7 +4,7 @@
   become: false
 
   tasks:
-    - name: Sync only shell scripts
+    - name: ====== Sync only shell scripts ======
       ansible.builtin.synchronize:
         src: /home/jacksparrow/ansible/files/
         dest: ~/

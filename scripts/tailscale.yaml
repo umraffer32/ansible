@@ -6,14 +6,14 @@
     - group_vars/workers/vault.yml
 
   tasks:
-    - name: Add Tailscale GPG key
+    - name: ====== Add Tailscale GPG key ======
       ansible.builtin.shell: |
         curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/$(lsb_release -cs).gpg \
         | gpg --dearmor -o /usr/share/keyrings/tailscale-archive-keyring.gpg
       args:
         creates: /usr/share/keyrings/tailscale-archive-keyring.gpg
 
-    - name: Add Tailscale repository
+    - name: ====== Add Tailscale repository ======
       ansible.builtin.shell: |
         echo "deb [signed-by=/usr/share/keyrings/tailscale-archive-keyring.gpg] \
         https://pkgs.tailscale.com/stable/ubuntu $(lsb_release -cs) main" \
@@ -21,25 +21,25 @@
       args:
         creates: /etc/apt/sources.list.d/tailscale.list
 
-    - name: Install Tailscale
+    - name: ====== Install Tailscale ======
       ansible.builtin.apt:
         name: tailscale
         state: present
         update_cache: yes
 
-    - name: Enable and start Tailscale
+    - name: ====== Enable and start Tailscale ======
       ansible.builtin.systemd:
         name: tailscaled
         enabled: true
         state: started
 
-    - name: Check Tailscale status
+    - name: ====== Check Tailscale status ======
       ansible.builtin.command: tailscale status
       register: tailscale_status
       changed_when: false
       failed_when: false
 
-    - name: Bring Tailscale up with auth key
+    - name: ====== Bring Tailscale up with auth key ======
       ansible.builtin.command: >
         tailscale up
         --authkey={{ tailscale_authkey }}

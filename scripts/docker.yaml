@@ -3,7 +3,7 @@
   hosts: workers
   become: true
   tasks:
-    - name: Install prerequisite packages
+    - name: ====== Install prerequisite packages ======
       ansible.builtin.apt:
         name:
           - apt-transport-https
@@ -14,19 +14,19 @@
         state: present
         update_cache: yes
 
-    - name: Add Docker's official GPG key
+    - name: ====== Add Docker's official GPG key ======
       ansible.builtin.shell: |
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
       args:
         creates: /usr/share/keyrings/docker-archive-keyring.gpg
 
-    - name: Add Docker repository
+    - name: ====== Add Docker repository ======
       ansible.builtin.shell: |
         echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
       args:
         creates: /etc/apt/sources.list.d/docker.list
 
-    - name: Install Docker Engine and Docker Compose
+    - name: ====== Install Docker Engine and Docker Compose ======
       ansible.builtin.apt:
         name:
           - docker-ce
@@ -36,7 +36,7 @@
         state: present
         update_cache: yes
 
-    - name: Enable and start Docker service
+    - name: ====== Enable and start Docker service ======
       ansible.builtin.systemd:
         name: docker
         enabled: true
