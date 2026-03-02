@@ -6,7 +6,7 @@
   tasks:
     - name: ====== Sync only shell scripts ======
       ansible.builtin.synchronize:
-        src: /home/jacksparrow/ansible/files/
+        src: "{{ lookup('env', 'HOME') }}/ansible/files/"
         dest: ~/
         delete: true
         rsync_opts:
