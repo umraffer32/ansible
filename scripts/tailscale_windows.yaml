@@ -1,0 +1,43 @@
+- name: Install and enroll Tailscale on Windows
+  hosts: windows
+  gather_facts: no
+
+  vars:
+    tailscale_url: https://pkgs.tailscale.com/stable/tailscale-setup-latest-amd64.msi
+    tailscale_installer: C:\Windows\Temp\tailscale.msi
+
+  tasks:
+
+    - name: Download Tailscale installer
+      ansible.windows.win_get_url:
+        url: "{{ tailscale_url }}"
+        dest: "{{ tailscale_installer }}"
+
+    - name: Install Tailscale
+      ansible.windows.win_package:
+        path: "{{ tailscale_installer }}"
+        state: present
+        arguments: /qn /norestart
+
+    - name: Kill interactive Tailscale GUI if running
+      ansible.windows.win_shell: |
+        taskkill /IM tailscale-ipn.exe /F 2>$null
+        taskkill /IM tailscale.exe /F 2>$null
+        exit 0
+      changed_when: false
+
+    - name: Restart Tailscale service
+      ansible.windows.win_service:
+        name: Tailscale
+        state: restarted
+
+    - name: Authenticate and join tailnet
+      ansible.windows.win_shell: |
+        & "C:\Program Files\Tailscale\tailscale.exe" up --auth-key {{ tailscale_authkey }} --unattended
+      register: ts_up
+      failed_when: >
+        (ts_up.rc != 0) and
+        (
+          ("already" not in (ts_up.stdout | lower)) and
+          ("already" not in (ts_up.stderr | lower))
+        )
