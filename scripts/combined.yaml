@@ -12,14 +12,9 @@
       loop: "{{ target_hosts }}"
       changed_when: false
 
-- name: Configure all worker nodes
+- name: Installing and Configuring unattended-upgrades
   hosts: workers
   become: true
-  vars_files:
-    - group_vars/workers/vault.yml   # tailscale auth key lives here
-
-  # gather_facts is enabled by default, ensuring it happens exactly once
-
   tasks:
     - name: ====== UPDATE & UPGRADE ======
       ansible.builtin.apt:
@@ -52,6 +47,28 @@
         name: unattended-upgrades
         state: restarted
 
+- name: Install QEMU Agent on Workers
+  hosts: workers
+  become: true
+  gather_facts: false
+  tasks:
+    - name: ====== Install QEMU Guest Agent ======
+      ansible.builtin.apt:
+        name: qemu-guest-agent
+        state: present
+        update_cache: yes
+
+    - name: ====== Enable and start QEMU Guest Agent service ======
+      ansible.builtin.systemd:
+        name: qemu-guest-agent
+        enabled: true
+        state: started
+
+- name: Installing Docker and Docker Compose
+  hosts: workers
+  become: true
+  gather_facts: false
+  tasks:
     - name: ====== Install prerequisite packages ======
       ansible.builtin.apt:
         name:
@@ -91,18 +108,14 @@
         enabled: true
         state: started
 
-    - name: ====== Install QEMU Guest Agent ======
-      ansible.builtin.apt:
-        name: qemu-guest-agent
-        state: present
-        update_cache: yes
+- name: Install Tailscale
+  hosts: workers
+  become: true
+  gather_facts: false
+  vars_files:
+    - group_vars/workers/vault.yml
 
-    - name: ====== Enable and start QEMU Guest Agent service ======
-      ansible.builtin.systemd:
-        name: qemu-guest-agent
-        enabled: true
-        state: started
-
+  tasks:
     - name: ====== Add Tailscale GPG key ======
       ansible.builtin.shell: |
         curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/$(lsb_release -cs).gpg \
@@ -142,6 +155,27 @@
       changed_when: false
       failed_when: false
 
+- name: Add helper scripts to home directory
+  hosts: workers
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: ====== Sync only shell scripts ======
+      ansible.builtin.synchronize:
+        src: "{{ lookup('env', 'HOME') }}/ansible/files/"
+        dest: ~/
+        delete: true
+        rsync_opts:
+          - "--include=*.sh"
+          - "--exclude=*"
+
+- name: Reboot the system
+  hosts: workers
+  become: true
+  gather_facts: false
+
+  tasks:
     - name: ====== Reboot the system ======
       ansible.builtin.reboot:
         msg: "Reboot initiated by Ansible"
