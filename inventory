@@ -1,8 +1,16 @@
 [workers]
-10.200.50.[106:111]
+10.200.50.106
 
 [workers:vars]
 ansible_user=serv0
 
 
+[windows]
+10.200.50.107
 
+[windows:vars]
+ansible_user=Ansible
+ansible_connection=winrm
+ansible_port=5985
+ansible_winrm_transport=ntlm
+ansible_winrm_server_cert_validation=ignore
