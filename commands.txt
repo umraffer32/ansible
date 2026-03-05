@@ -1,0 +1,6 @@
+For ansible vault:
+
+ansible-vault create FILENAME - Creates a new vault variable file
+ansible-vault view FILENAME - Allows you to view the contents of the file
+ansible-vault edit FILENAME - Allows you to edit the existing file
+
