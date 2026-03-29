@@ -1,0 +1,5 @@
+---
+-  import_playbook: update.yaml
+-  import_playbook: aws-tailscale.yaml
+
+
