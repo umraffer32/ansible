@@ -1,6 +1,6 @@
 ---
 - name: Update AWS instances
-  hosts: AWS
+  hosts: aws
   gather_facts: no
   become: yes
   tasks:
