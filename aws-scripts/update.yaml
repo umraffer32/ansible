@@ -5,9 +5,14 @@
   become: yes
   tasks:
     - name: Update apt cache
-      apt:
+      ansible.builtin.apt:
         update_cache: yes
         
     - name: Upgrade all packages
-      apt:
-        upgrade: yes    
+      ansible.builtin.apt:
+        upgrade: dist   
+
+    - name: Update locales
+      ansible.builtin.apt:
+        name: locales-all
+        state: present    
