@@ -1,6 +1,6 @@
 ---
 - name: Install and configure Tailscale on AWS instances
-  hosts: AWS
+  hosts: aws
   become: true
   gather_facts: true
 
