@@ -54,12 +54,17 @@ Initially, group variables were placed under a generic `aws` group. However, Ans
 
 ## Validation and Results
 
-The environment was validated by generating inventory dynamically from AWS, confirming SSH access through the bastion host, and running Ansible playbooks successfully across all private instances. The final result was a clean, idempotent deployment with all hosts reachable and no manual inventory management required.
+The environment was validated by generating inventory dynamically from AWS, confirming SSH access through the bastion host, and running Ansible playbooks successfully across all private instances. The final result was a clean, idempotent deployment with all hosts reachable and no manual inventory management required. This is demonstrated by running my **aws-tailscale.yaml** play twice.
 
 ![Pings](./images/pings.png) 
 
 ![Instances](./images/instances.png)
 
+*Figure: Using the dynamic inventory file we can see Ansible successfully pings the instances. I've highlighted the IPs on the AWS instances page.*
+
+![Run1](./images/run1.png)
+
+![Run2](./images/run2.png)
 
 
 
