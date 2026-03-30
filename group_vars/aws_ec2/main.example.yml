@@ -1,4 +1,5 @@
 # Example only - real values stored with Ansible Vault (excluded from repo)
 # Tailscale auth key used for automated node enrollment
+# No password file was used for the vault
 
 tailscale_authkey: "{{ tailscale_authkey }}"
