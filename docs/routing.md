@@ -17,3 +17,7 @@ This section describes how route tables were configured so both private subnets 
 
 ![Private Route Table 2](../images/private-rt2.png)
 *Figure: Table for Private Subnet 2*
+
+## Subnet Associations
+
+The public subnet was associated with the public route table. Both private subnets were associated with the private route table so outbound traffic could be forwarded to the NAT instance. This routing design allowed private instances to reach the internet for package installation and updates without exposing them directly to inbound public traffic. It also allowed both private subnets to share the same outbound path through the NAT instance.
