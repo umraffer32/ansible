@@ -13,5 +13,7 @@ This section describes how route tables were configured so both private subnets 
   - 0.0.0.0/0 → NAT instance
 
 ![Private Route Table 1](../images/private-rt1.png)
+*Figure: Table for Private Subnet 1*
 
 ![Private Route Table 2](../images/private-rt2.png)
+*Figure: Table for Private Subnet 2*
