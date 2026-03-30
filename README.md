@@ -36,6 +36,6 @@ SSH connections to private instances were initially failing because traffic was 
 A private AWS instance (10.200.50.100) was assigned the same IP address as the Ansible control node in the local environment. This caused incorrect routing and connection failures. The issue was resolved by rebuilding the AWS VPC using a non-overlapping CIDR range (10.0.0.0/16) and allowing AWS to automatically assign private IP addresses.
 
 ![CIDRs](./images/CIDR.png)
-
+*Figure: Rebuilt VPC using non-overlapping CIDR range (10.0.0.0/16)*
 
 Work in progress...
