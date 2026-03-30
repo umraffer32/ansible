@@ -6,7 +6,7 @@ ansible_user=serv0
 
 
 [windows]
-10.200.50.107
+10.200.50.[124:127]
 
 [windows:vars]
 ansible_user=Ansible
