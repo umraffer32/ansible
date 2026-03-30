@@ -1,13 +1,13 @@
 ---
 - name: Restart all AWS instances
-  hosts: AWS
+  hosts: aws_ec2
   gather_facts: false
   become: yes
   tasks:
     - name: Rebooting AWS instances
       ansible.builtin.reboot:
         msg: "Reboot initiated by Ansible"
-        reboot_timeout: 35
-        pre_reboot_delay: 5
-        post_reboot_delay: 5
+        reboot_timeout: 60
+        pre_reboot_delay: 10
+        post_reboot_delay: 10
         test_command: whoami
