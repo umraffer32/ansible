@@ -98,7 +98,7 @@ Detailed setup steps can be found in the docs folder:
 
 ## Security
 
-Sensitive values (such as the Tailscale authentication key used for node enrollment) were stored using Ansible Vault and are excluded from version control. A sanitized example file is included in `group_vars/aws_ec2/main.yml.example` to demonstrate variable structure without exposing secrets.
+Sensitive values (such as the Tailscale authentication key used for node enrollment) were stored using Ansible Vault and are excluded from version control. A sanitized example file is included in `group_vars/aws_ec2/main.yml.example` to demonstrate variable structure without exposing secrets. Vault decryption was performed at runtime using the `--ask-vault-pass` flag.
 
 
 
