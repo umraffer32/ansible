@@ -52,6 +52,30 @@ Initially, group variables were placed under a generic `aws` group. However, Ans
 
 ![Group Vars](./images/group-vars.png)
 
+## Validation and Results
+
+The environment was validated by generating inventory dynamically from AWS, confirming SSH access through the bastion host, and running Ansible playbooks successfully across all private instances. The final result was a clean, idempotent deployment with all hosts reachable and no manual inventory management required.
+
+![Pings](./images/pings.png) 
+
+![Instances](./images/instances.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
