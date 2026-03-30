@@ -48,7 +48,7 @@ By default, Ansible dynamic inventory included all running EC2 instances, includ
 
 ### 5. Group Variables Were Misaligned
 
-Initially, group variables were placed under a generic `aws` group. However, Ansible dynamic inventory created a group named `aws_ec2`, causing the variables to be ignored. This was resolved by aligning the group_vars directory with the actual dynamic inventory group: group_vars/aws_ec2/main.yml
+Initially, group variables were placed under a generic `aws` group. However, Ansible dynamic inventory created a group named `aws_ec2`, causing the variables to be ignored. This was resolved by aligning the group_vars directory with the actual dynamic inventory group: **group_vars/aws_ec2/main.yml**
 
 ![Group Vars](./images/group-vars.png)
 
