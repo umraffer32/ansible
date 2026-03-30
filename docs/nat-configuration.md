@@ -22,6 +22,7 @@ sudo iptables -A FORWARD -i enX0 -o enX0 -j ACCEPT
 sudo apt update
 sudo apt install -y iptables-persistent
 sudo netfilter-persistent save
+```
 
 To save time you could also copy/paste that code and turn it into an executable bash script:
 
