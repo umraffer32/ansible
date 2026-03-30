@@ -1,0 +1,19 @@
+---
+- name: Bring Tailscale down on AWS instances
+  hosts: aws_ec2
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Check Tailscale status
+      ansible.builtin.command: tailscale status --json
+      register: tailscale_status
+      changed_when: false
+      failed_when: false
+
+    - name: Bring Tailscale down if connected
+      ansible.builtin.command: tailscale down
+      when: "'Running' in tailscale_status.stdout"
+      register: tailscale_down
+      changed_when: "'Running' in tailscale_status.stdout"
+      
