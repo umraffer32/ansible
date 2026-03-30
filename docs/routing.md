@@ -12,6 +12,8 @@ This section describes how route tables were configured so both private subnets 
 - Private route table
   - 0.0.0.0/0 → NAT instance (**eni-00c46ce66f2bbe923**)
 
+## Route Table Screenshots  
+
 ![Private Route Table 1](../images/private-rt1.png)
 *Figure: Table for Private Subnet 1*
 
