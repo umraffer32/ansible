@@ -50,3 +50,5 @@ Without this change, traffic from private subnets would not be routed through th
 ![Destination Check](../images/destination.png)
 
 ![Stop](../images/stop.png)
+
+*Figure: Disabling source/destination check on the NAT instance to allow packet forwarding.*
