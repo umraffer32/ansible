@@ -70,6 +70,10 @@ The environment was validated by generating inventory dynamically from AWS, conf
 
 *Figure: Second run validating idempotence.*
 
+The picture below shows that the devices successfully joined my tailnet. They show as offline because I had terminated the instances before taking a screenshot. If I was to re-create the instances and run the play again the IPs would all be different which wouldn't align with previous screenshots.
+
+![Tailscale](./images/tailscale.png)
+
 ## Key Takeaways
 
 - Dynamic inventory eliminates the need for static host management
