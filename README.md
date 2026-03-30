@@ -54,7 +54,7 @@ Initially, group variables were placed under a generic `aws` group. However, Ans
 
 ## Validation and Results
 
-The environment was validated by generating inventory dynamically from AWS, confirming SSH access through the bastion host, and running Ansible playbooks successfully across all private instances. The final result was a clean, idempotent deployment with all hosts reachable and no manual inventory management required. This is demonstrated by running my **aws-tailscale.yaml** play twice.
+The environment was validated by generating inventory dynamically from AWS, confirming SSH access through the bastion host, and running Ansible playbooks successfully across all private instances. The final result was a clean, idempotent deployment with all hosts reachable and no manual inventory management required. This is demonstrated by running my [`aws-tailscale.yaml`](./aws-scripts/aws-tailscale.yaml) play twice.
 
 ![Pings](./images/pings.png) 
 
@@ -64,11 +64,11 @@ The environment was validated by generating inventory dynamically from AWS, conf
 
 ![Run1](./images/run1.png)
 
-*Figure: First run of installing and authenticating AWS instances to my tailnet*
+*Figure: First run of installing and authenticating AWS instances to my tailnet.*
 
 ![Run2](./images/run2.png)
 
-*Figure: Second run validating idempotence*
+*Figure: Second run validating idempotence.*
 
 
 
