@@ -85,3 +85,13 @@ The picture below shows that the devices successfully joined my tailnet. They sh
 ## Conclusion
 
 This project demonstrates how to build a scalable and maintainable AWS environment using Ansible dynamic inventory, proper network design, and automation best practices. By eliminating manual configuration and relying on AWS as the source of truth, the environment can scale seamlessly while remaining easy to manage.
+
+## Additional Documentation
+
+Detailed setup steps can be found in the docs folder:
+
+- [VPC Setup](./docs/vpc-setup.md)
+- [NAT Configuration](./docs/nat-configuration.md)
+- [Routing](./docs/routing.md)
+- [Security Groups](./docs/security-groups.md)
+- [Ansible Vault Usage](./docs/ansible-vault.md)
