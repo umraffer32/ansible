@@ -29,11 +29,13 @@ Initially, private instance IPs were manually added into SSH configs and invento
 
 SSH connections to private instances were initially failing because traffic was attempting to connect directly instead of routing through the bastion host. The root cause was that SSH configuration only matched named hosts, while Ansible uses raw private IP addresses. This was resolved by updating the SSH configuration to match the private subnet range and automatically apply ProxyJump.
 
-![Architecture Diagram](./images/ssh-config.png)
+![SSH Config](./images/ssh-config.png)
 
+### 3. CIDR Overlap Caused Conflicts
 
+A private AWS instance (10.200.50.100) was assigned the same IP address as the Ansible control node in the local environment. This caused incorrect routing and connection failures. The issue was resolved by rebuilding the AWS VPC using a non-overlapping CIDR range (10.0.0.0/16) and allowing AWS to automatically assign private IP addresses.
 
-
+![CIDRs](./images/CIDR.png)
 
 
 Work in progress...
