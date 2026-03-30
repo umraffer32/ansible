@@ -23,7 +23,7 @@ This diagram shows how Ansible connects to private EC2 instances through a basti
 
 ### 1. Manual IP Management Did Not Scale
 
-Initially, private instance IPs were manually added into SSH configs and inventory files. This approach does not scale and becomes difficult to maintain as the number of instances grows.This project replaces static inventory with Ansible dynamic inventory, allowing AWS to act as the source of truth. My thought process for this revolved around the question of having to automate processes for 100 devices, or 1000. Surely the answer is NOT to manually input the IPs into the inventory file.
+Initially, private instance IPs were manually added into SSH configs and inventory files. This approach does not scale and becomes difficult to maintain as the number of instances grows. This project replaces static inventory with Ansible dynamic inventory, allowing AWS to act as the source of truth. My thought process for this revolved around the question of having to automate processes for 100 devices, or 1000. Surely the answer is NOT to manually input the IPs into the inventory file.
 
 ### 2. Bastion Proxy Was Not Being Used
 
