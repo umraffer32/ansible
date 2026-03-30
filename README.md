@@ -17,7 +17,20 @@ This project builds a scalable AWS environment using a bastion host, NAT instanc
 
 ![Architecture Diagram](./images/architecture.png)
 
-This diagram shows how Ansible connects to private EC2 instances through a bastion host, while private instances use a NAT instance for outbound internet access.
+This diagram shows how Ansible connects to private EC2 instances through a bastion host, while private instances use a NAT instance for outbound internet access. The alternative was to use the  built in AWS function of a NAT gateway, but that was not cost effective for the purposes of this project.
+
+## Problems Solved
+
+### 1. Manual IP Management Did Not Scale
+
+Initially, private instance IPs were manually added into SSH configs and inventory files. This approach does not scale and becomes difficult to maintain as the number of instances grows.This project replaces static inventory with Ansible dynamic inventory, allowing AWS to act as the source of truth. My thought process for this revolved around the question of having to automate processes for 100 devices, or 1000. Surely the answer is NOT to manually input the IPs into the inventory file.
+
+### 2. Bastion Proxy Was Not Being Used
+
+SSH connections to private instances were initially failing because traffic was attempting to connect directly instead of routing through the bastion host. The root cause was that SSH configuration only matched named hosts, while Ansible uses raw private IP addresses. This was resolved by updating the SSH configuration to match the private subnet range and automatically apply ProxyJump.
+
+![Architecture Diagram](./images/ssh-config.png)
+
 
 
 
