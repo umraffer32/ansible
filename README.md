@@ -64,9 +64,11 @@ The environment was validated by generating inventory dynamically from AWS, conf
 
 ![Run1](./images/run1.png)
 
+*Figure: First run of installing and authenticating AWS instances to my tailnet*
+
 ![Run2](./images/run2.png)
 
-
+*Figure: Second run validating idempotence*
 
 
 
