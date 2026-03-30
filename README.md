@@ -43,6 +43,7 @@ A private AWS instance (10.200.50.100) was assigned the same IP address as the A
 By default, Ansible dynamic inventory included all running EC2 instances, including the bastion and NAT instances. This was not desired, as only private workload instances should be managed. This was resolved by applying AWS instance tags and filtering on those tags in the inventory configuration.
 
 ![AWS Inventory File](./images/aws-inventory.png)
+
 *Figure: Ansible inventory file used to pull private IPs from AWS automatically*
 
 
