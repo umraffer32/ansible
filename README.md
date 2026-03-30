@@ -95,6 +95,7 @@ Detailed setup steps can be found in the docs folder:
 - [Routing](./docs/routing.md)
 - [Security Groups](./docs/security-groups.md)
 - [Ansible Vault Usage](./docs/ansible-vault.md)
+- [Tailscale Ephemeral Keys](./docs/tailscale-keys.md)
 
 ## Security
 
