@@ -70,7 +70,13 @@ The environment was validated by generating inventory dynamically from AWS, conf
 
 *Figure: Second run validating idempotence.*
 
+## Key Takeaways
 
+- Dynamic inventory eliminates the need for static host management
+- AWS tags provide clean and scalable host targeting
+- Proper SSH configuration is critical when using a bastion host
+- Avoiding CIDR overlap prevents routing conflicts
+- Aligning group variables with dynamic inventory groups ensures correct variable application
 
 
 
