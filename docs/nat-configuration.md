@@ -31,4 +31,4 @@ The code used to configure NAT is as follows:
 
 To save time you could also copy/paste that code and turn it into an executable bash script:
 
-![NAT Script](./images/nat-script.png)
+![NAT Script](../images/nat-script.png)
