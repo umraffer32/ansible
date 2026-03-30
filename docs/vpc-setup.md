@@ -26,3 +26,9 @@ This CIDR range was chosen to avoid overlap with the local lab environment, whic
 ## Design Rationale
 
 The public subnet was used for the bastion and NAT instances because both require internet-facing access. The private subnets were used for workload instances so they could remain inaccessible from the public internet while still reaching outbound services through the NAT instance.  
+
+## VPC Resource Map
+
+The VPC layout and CIDR redesign are shown in the main README:
+
+[View Architecture](../README.md#architecture)
