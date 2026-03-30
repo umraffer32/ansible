@@ -31,4 +31,4 @@ The public subnet was used for the bastion and NAT instances because both requir
 
 The VPC layout and CIDR redesign are shown in the main README:
 
-[View Architecture](../README.md#CIDR Overlap Caused Conflicts)
+[View Architecture](../README.md#'CIDR Overlap Caused Conflicts')
