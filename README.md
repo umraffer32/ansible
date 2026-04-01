@@ -31,6 +31,8 @@ SSH connections to private instances were initially failing because traffic was 
 
 ![SSH Config](./images/ssh-config.png)
 
+**IMPORTANT NOTE:** If the Bastion host is stopped it will be re-assigned a different public IP address when started again. In this case you'll need to update the config file with the correct public IP. If an elastic IP is used for the bastion host then it will persist through reboots, however it will cost about $4 a month.
+
 ### 3. CIDR Overlap Caused Conflicts
 
 A private AWS instance (10.200.50.100) was assigned the same IP address as the Ansible control node in the local environment. This caused incorrect routing and connection failures. The issue was resolved by rebuilding the AWS VPC using a non-overlapping CIDR range (10.0.0.0/16) and allowing AWS to automatically assign private IP addresses.
