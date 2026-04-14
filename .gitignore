@@ -3,6 +3,11 @@ group_vars/windows/windows.yml
 group_vars/workers/vault.yml
 bootstrap.yml
 inv1
-ansible/files/
+files/
+ps-scripts/
+commands.txt
+kill-hosts.sh
+server.sh
+site.yaml
 
 
