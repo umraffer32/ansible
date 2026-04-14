@@ -1,3 +1,6 @@
 group_vars/aws_ec2/main.yml
 group_vars/windows/windows.yml
 group_vars/workers/vault.yml
+bootstrap.yml
+inv1
+
