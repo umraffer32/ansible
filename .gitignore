@@ -3,4 +3,10 @@ group_vars/windows/windows.yml
 group_vars/workers/vault.yml
 bootstrap.yml
 inv1
-
+~/files/
+~/ps-scripts/
+commands.txt
+inventory
+kill-hosts.sh
+server.sh
+site.yaml
